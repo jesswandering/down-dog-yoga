@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 // add passport
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('homepage');
 })
 
 app.use('/auth', require('./controllers/auth'));
@@ -50,6 +50,21 @@ app.get('/profile', isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get();
   res.render('profile', { id, name, email });
 });
+
+// Homepage Route
+app.get('/homepage', async (req, res) => {
+  axios.get('https://yoga-api-nzy4.onrender.com/v1/')
+    .then(function (response) {
+      // handle success
+      console.log(response);
+      res.json({ data: response.data }) // our response to the user
+    }) // no semicolin so that the catch will be included
+    .catch(function (error) {
+      //console.log(error);
+      res.json({ message: 'Data not found. Please try again later.' });
+    });
+});
+
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
