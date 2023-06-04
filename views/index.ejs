@@ -1,0 +1,13 @@
+<h2>Down Dog Yoga Homepage</h2>
+<a href="/cateories">Categories</a>
+<% console.log('categories --->', categories) %>
+    <ul>
+        <% for( let i=0; i < categories.length; i++ ) { %>
+            <% let category=categories[i] %>
+                <li class="sidelist">
+                    <a href="/categories/<%= category.id %>">
+                        <%= category.category_name %>
+                    </a>
+                    <% } %>
+                </li>
+    </ul>

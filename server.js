@@ -6,6 +6,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
+const axios = require('axios');
 
 //enviornment variables
 SECRET_SESSION = process.env.SECRET_SESSION
@@ -40,8 +41,30 @@ app.use((req, res, next) => {
 // add passport
 
 app.get('/', (req, res) => {
-  res.render('homepage');
-})
+  axios.get('https://yoga-api-nzy4.onrender.com/v1/categories')
+    .then(function (response) {
+      // handle success
+      return res.render('index', { categories: response.data })
+    })
+    .catch(function (error) {
+      res.json({ message: 'Data not found. Please try again later.' });
+    });
+});
+
+// Categories Route
+app.get('/categories/:id', (req, res) => {
+  axios.get('https://yoga-api-nzy4.onrender.com/v1/categories?id=' + req.params.id)
+    .then(function (response) {
+      // handle success
+      console.log(response)
+      return res.render('categories-by-id', { category: response.data })
+    })
+    .catch(function (error) {
+      res.json({ message: 'Data not found. Please try again later.' });
+    });
+});
+
+
 
 app.use('/auth', require('./controllers/auth'));
 
@@ -50,21 +73,6 @@ app.get('/profile', isLoggedIn, (req, res) => {
   const { id, name, email } = req.user.get();
   res.render('profile', { id, name, email });
 });
-
-// Homepage Route
-app.get('/homepage', async (req, res) => {
-  axios.get('https://yoga-api-nzy4.onrender.com/v1/')
-    .then(function (response) {
-      // handle success
-      console.log(response);
-      res.json({ data: response.data }) // our response to the user
-    }) // no semicolin so that the catch will be included
-    .catch(function (error) {
-      //console.log(error);
-      res.json({ message: 'Data not found. Please try again later.' });
-    });
-});
-
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
