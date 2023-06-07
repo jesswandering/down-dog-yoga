@@ -1,1 +1,15 @@
 <h2>Yoga Poses</h2>
+<ul>
+    <% for( let i=0; i < poses.length; i++ ) { %>
+        <% let pose=poses[i] %>
+            <img src="<%= pose.url_png %>" alt="">
+            <li class="sidelist">
+                <p>
+                    <%= pose.english_name %>
+                </p>
+                <p>
+                    <%= pose.pose_description %>
+                </p>
+                <% } %>
+            </li>
+</ul>

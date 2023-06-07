@@ -1,1 +1,24 @@
 <h2>Poses by Name</h2>
+
+<h2>
+    <%= poses.english_name %>
+</h2>
+
+<p>
+    <%= poses.pose_description %>
+</p>
+
+<ul>
+    <% for(let i=0; i < poses.poses.length; i++) { %>
+        <% let pose=poses.poses[i] %>
+            <li class="sidelist">
+                <p>
+                    <%= pose.english_name %>
+                </p>
+                <p>
+                    <%= pose.pose_description %>
+                </p>
+                <img src="<%= pose.url_png %>" alt="">
+            </li>
+            <% } %>
+</ul>

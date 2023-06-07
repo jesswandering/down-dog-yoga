@@ -40,18 +40,31 @@ app.use((req, res, next) => {
 
 // add passport
 
+// app.get('/', (req, res) => {
+//   axios.get('https://yoga-api-nzy4.onrender.com/v1/categories')
+//     .then(function (response) {
+//       // handle success
+//       return res.render('index', { categories: response.data }) // response.data
+//     })
+//     .catch(function (error) {
+//       res.json({ message: 'Data not found. Please try again later.' });
+//     });
+// });
+
 app.get('/', (req, res) => {
   axios.get('https://yoga-api-nzy4.onrender.com/v1/categories')
     .then(function (response) {
-      // handle success
-      return res.render('index', { categories: response.data })
+      const categories = response.data;
+      console.log(categories);
+      return res.render('index', { categories, categoriesByLevels: [] }); // Pass an empty array for categoriesByLevels
     })
     .catch(function (error) {
       res.json({ message: 'Data not found. Please try again later.' });
     });
 });
 
-// Categories Route
+
+// Categories Route by Id
 app.get('/categories/:id', (req, res) => {
   axios.get('https://yoga-api-nzy4.onrender.com/v1/categories?id=' + req.params.id)
     .then(function (response) {
@@ -64,7 +77,31 @@ app.get('/categories/:id', (req, res) => {
     });
 });
 
+// Categories Route by Id
+app.get('/categories/:id', (req, res) => {
+  axios.get('https://yoga-api-nzy4.onrender.com/v1/categories?id=' + req.params.id)
+    .then(function (response) {
+      // handle success
+      console.log(response)
+      return res.render('categories-by-id', { category: response.data })
+    })
+    .catch(function (error) {
+      res.json({ message: 'Data not found. Please try again later.' });
+    });
+});
 
+//POSES ROUTE:
+app.get('/poses', (req, res) => {
+  axios.get('https://yoga-api-nzy4.onrender.com/v1/poses')
+    .then(function (response) {
+      // handle success
+      console.log(response.data)
+      return res.render('poses', { poses: response.data })
+    })
+    .catch(function (error) {
+      res.json({ message: 'Data not found. Please try again later.' });
+    });
+});
 
 app.use('/auth', require('./controllers/auth'));
 
