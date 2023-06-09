@@ -38,19 +38,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// add passport
-
-// app.get('/', (req, res) => {
-//   axios.get('https://yoga-api-nzy4.onrender.com/v1/categories')
-//     .then(function (response) {
-//       // handle success
-//       return res.render('index', { categories: response.data }) // response.data
-//     })
-//     .catch(function (error) {
-//       res.json({ message: 'Data not found. Please try again later.' });
-//     });
-// });
-
 app.get('/', (req, res) => {
   axios.get('https://yoga-api-nzy4.onrender.com/v1/categories')
     .then(function (response) {
@@ -63,7 +50,6 @@ app.get('/', (req, res) => {
     });
 });
 
-
 // Categories Route by Id
 app.get('/categories/:id', (req, res) => {
   axios.get('https://yoga-api-nzy4.onrender.com/v1/categories?id=' + req.params.id)
@@ -90,9 +76,22 @@ app.get('/categories/:id', (req, res) => {
     });
 });
 
-//POSES ROUTE:
+// POSES ROUTE:
 app.get('/poses', (req, res) => {
   axios.get('https://yoga-api-nzy4.onrender.com/v1/poses')
+    .then(function (response) {
+      // handle success
+      console.log(response.data)
+      return res.render('poses', { poses: response.data })
+    })
+    .catch(function (error) {
+      res.json({ message: 'Data not found. Please try again later.' });
+    });
+});
+
+// POSES by LEVEL ROUTE:
+app.get('/poses-by-level', (req, res) => {
+  axios.get('https://yoga-api-nzy4.onrender.com/v1/poses?level=' + req.params.difficulty_level)
     .then(function (response) {
       // handle success
       console.log(response.data)
