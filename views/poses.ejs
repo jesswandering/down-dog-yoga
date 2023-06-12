@@ -2,13 +2,13 @@
 <ul>
     <% for( let i=0; i < poses.length; i++ ) { %>
         <% let pose=poses[i] %>
-            <img src="<%= pose.url_png %>" alt="">
+            <img src="<%= pose.img %>" alt="">
             <li class="sidelist">
                 <p>
-                    <%= pose.english_name %>
+                    <%= pose.name %>
                 </p>
                 <p>
-                    <%= pose.pose_description %>
+                    <%= pose.description %>
                 </p>
                 <% } %>
             </li>

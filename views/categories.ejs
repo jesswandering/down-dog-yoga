@@ -1,1 +1,13 @@
 <h2>Categories</h2>
+<a href="/categories">Categories</a>
+<% console.log('categories --->', categories) %>
+    <ul>
+        <% for( let i=0; i < categories.length; i++ ) { %>
+            <% let category=categories[i] %>
+                <li class="sidelist">
+                    <a href="/categories/<%= category.id %>">
+                        <%= category.category_name %>
+                    </a>
+                    <% } %>
+                </li>
+    </ul>
