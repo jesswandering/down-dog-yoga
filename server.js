@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
   res.render('index')
 });
 
-app.use('/auth', require('./controllers/'))
+// app.use('/auth', require('./controllers/'))
 
 // app.get('/categories', (req, res) => {
 //   axios.get('https://yoga-api-nzy4.onrender.com/v1/categories')
@@ -61,10 +61,6 @@ app.use('/auth', require('./controllers/'))
 //       res.json({ message: 'Data not found. Please try again later.' });
 //     });
 // });
-
-app.get('/categories', (req, res) => {
-  res.json('categories page')
-});
 
 // Categories Route by Id
 app.get('/categories/:id', (req, res) => {
