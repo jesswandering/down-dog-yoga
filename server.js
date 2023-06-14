@@ -50,17 +50,18 @@ app.get('/', (req, res) => {
 
 // app.use('/auth', require('./controllers/'))
 
-// app.get('/categories', (req, res) => {
-//   axios.get('https://yoga-api-nzy4.onrender.com/v1/categories')
-//     .then(function (response) {
-//       const categories = response.data;
-//       console.log(categories);
-//       res.render('categories', { categories });
-//     })
-//     .catch(function (error) {
-//       res.json({ message: 'Data not found. Please try again later.' });
-//     });
-// });
+//Route for Categories
+app.get('/categories', (req, res) => {
+  axios.get('https://yoga-api-nzy4.onrender.com/v1/categories')
+    .then(function (response) {
+      const categories = response.data;
+      console.log(categories);
+      res.render('categories', { categories });
+    })
+    .catch(function (error) {
+      res.json({ message: 'Data not found. Please try again later.' });
+    });
+});
 
 // Categories Route by Id
 app.get('/categories/:id', (req, res) => {
@@ -119,27 +120,33 @@ app.get('/poses-by-level', (req, res) => {
 
 
 
-app.get("/test", (req, res) => {
-  db.pose.findAll({
-    order: [
-      ['name', 'ASC']
-    ]
-  })
-    .then(poses => {
-      return res.render('poses', { poses: poses })
+app.get("/search", (req, res) => {
+  Promise.all([
+    db.pose.findAll({
+      order: [
+        ['name', 'ASC']
+      ]
+    }),
+    db.categories.findAll({
+      order: [
+        ['name', 'ASC']
+      ]
+    })
+  ])
+    .then(([poses, categories]) => {
+      return res.render('search', { poses: poses, categories: categories })
     })
     .catch(error => {
       console.log('error', error);
       let message = 'Cannot find data. Please try again...';
       res.render('error', { message });
     });
-})
+});
 
-
-
-
-
-
+// Route to Search
+// app.get("/search", (req, res) => {
+//   res.render('search');
+// });
 
 
 

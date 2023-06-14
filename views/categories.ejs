@@ -1,10 +1,10 @@
 <h2>Categories</h2>
 <a href="/categories">Categories</a>
 <% console.log('categories --->', categories) %>
-    <ul>
+    <ul class="list-group">
         <% for( let i=0; i < categories.length; i++ ) { %>
             <% let category=categories[i] %>
-                <li class="sidelist">
+                <li class="list-group-item">
                     <a href="/categories/<%= category.id %>">
                         <%= category.category_name %>
                     </a>

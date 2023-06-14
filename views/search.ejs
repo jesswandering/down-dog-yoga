@@ -10,8 +10,8 @@
                     <select id="designation" name="code" class="form-control mt-3 text-center">
                         <option selected disabled>Pose name</option>
                         <% poses.forEach(pose=> { %>
-                            <option value="<%= pose.poseCode %>">
-                                <%= pose.fullName %>
+                            <option value="<%= pose.name %>">
+                                <%= pose.name %>
                             </option>
                             <% }) %>
                     </select>
