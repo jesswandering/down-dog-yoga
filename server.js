@@ -69,25 +69,13 @@ app.get('/categories/:id', (req, res) => {
     .then(function (response) {
       // handle success
       console.log(response)
-      return res.render('categories-by-id', { category: response.data })
+      return res.render('category', { category: response.data })
     })
     .catch(function (error) {
       res.json({ message: 'Data not found. Please try again later.' });
     });
 });
 
-// Categories Route by Id
-app.get('/categories/:id', (req, res) => {
-  axios.get('https://yoga-api-nzy4.onrender.com/v1/categories?id=' + req.params.id)
-    .then(function (response) {
-      // handle success
-      console.log(response)
-      return res.render('categories-by-id', { category: response.data })
-    })
-    .catch(function (error) {
-      res.json({ message: 'Data not found. Please try again later.' });
-    });
-});
 
 // POSES ROUTE:
 app.get('/poses', (req, res) => {
@@ -102,51 +90,25 @@ app.get('/poses', (req, res) => {
     });
 });
 
-// POSES by LEVEL ROUTE:
-app.get('/poses-by-level', (req, res) => {
-  axios.get('https://yoga-api-nzy4.onrender.com/v1/poses?level=' + req.params.difficulty_level)
+// 
+
+// Route forPOSES by Id
+app.get('/poses/:id', (req, res) => {
+  axios.get('https://yoga-api-nzy4.onrender.com/v1//poses?id=' + req.params.id)
     .then(function (response) {
       // handle success
       console.log(response.data)
-      return res.render('poses', { poses: response.data })
+      return res.render('pose', { pose: response.data })
     })
     .catch(function (error) {
       res.json({ message: 'Data not found. Please try again later.' });
     });
 });
 
-
-
-
-
-
-app.get("/search", (req, res) => {
-  Promise.all([
-    db.pose.findAll({
-      order: [
-        ['name', 'ASC']
-      ]
-    }),
-    db.categories.findAll({
-      order: [
-        ['name', 'ASC']
-      ]
-    })
-  ])
-    .then(([poses, categories]) => {
-      return res.render('search', { poses: poses, categories: categories })
-    })
-    .catch(error => {
-      console.log('error', error);
-      let message = 'Cannot find data. Please try again...';
-      res.render('error', { message });
-    });
-});
-
 // Route to Search
-// app.get("/search", (req, res) => {
-//   res.render('search');
-// });
+app.get("/search", (req, res) => {
+  return res.render('search');
+});
 
 
 

@@ -1,47 +1,24 @@
-<head>
-    <title>Let's Start Yoga</title>
-</head>
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-md-6">
-            <form action="/result" method="post">
-                <div class="form-group text-center">
-                    <label for="code">Search by Pose Name</label>
-                    <select id="designation" name="code" class="form-control mt-3 text-center">
-                        <option selected disabled>Pose name</option>
-                        <% poses.forEach(pose=> { %>
-                            <option value="<%= pose.name %>">
-                                <%= pose.name %>
-                            </option>
-                            <% }) %>
-                    </select>
-                </div>
-                <div class="text-center">
-                    <button for="code" type="submit" class="btn btn-primary mt-2">Search by Pose Name</button>
-                </div>
-            </form>
-        </div>
+<section class="section">
+    <div class="container">
+        <div class="columns is-desktop is-justify-content-center">
+            <div class="column is-8-desktop">
+                <div class="p-6 shadow rounded content">
+                    <h2 class="section-title">Search</h2>
+                    <form method="POST" action="/search">
+                        <div class="columns is-multiline">
 
-
-        <div class="col-md-6">
-            <form action="/result" method="post">
-                <div class="form-group text-center">
-                    <label for="designation">Search by Category</label>
-                    <select id="designation" name="designation" class="form-control mt-3 text-center">
-                        <option selected disabled>Categories</option>
-                        <% categories.forEach(category=> { %>
-                            <% if(category !=="" ) { %>
-                                <option value="<%= category %>">
-                                    <%= category %>
-                                </option>
-                                <% } %>
-                                    <% }) %>
-                    </select>
+                            <div class="form-group column is-12">
+                                <label for="item">Item</label>
+                                <input type="text" class="input" id="item" name="item" placeholder="Search Capsule"
+                                    required>
+                            </div>
+                            <div class="column is-12">
+                                <button type="submit" class="btn btn-primary">Send</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="text-center">
-                    <button for="designation" type="submit" class="btn btn-primary mt-2">Search by Category</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
+</section>

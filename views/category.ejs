@@ -1,0 +1,28 @@
+<h1>
+    <%= category.category_name %>
+</h1>
+
+<p>
+    <%= category.category_description %>
+</p>
+<ul>
+    <% for( let i=0; i < category.poses.length; i++ ) { %>
+        <% let pose=category.poses[i] %>
+            <img src="<%= pose.url_png %>" alt="">
+            <p>
+            <h2>
+                <a href="/poses/<%= pose.id %>">
+                    <%= pose.english_name %>
+                </a>
+            </h2>
+            </p>
+            <b>Sanskrit Name:</b>
+            <%= pose.sanskrit_name %>
+                <p>
+                    <b>Pose Description:</b>
+                    <%= pose.pose_description %>
+                </p>
+                <hr>
+                <% } %>
+
+</ul>
