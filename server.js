@@ -90,11 +90,9 @@ app.get('/poses', (req, res) => {
     });
 });
 
-// 
-
-// Route forPOSES by Id
+// Route for POSES by Id
 app.get('/poses/:id', (req, res) => {
-  axios.get('https://yoga-api-nzy4.onrender.com/v1//poses?id=' + req.params.id)
+  axios.get('https://yoga-api-nzy4.onrender.com/v1/poses?id=' + req.params.id)
     .then(function (response) {
       // handle success
       console.log(response.data)
@@ -105,11 +103,41 @@ app.get('/poses/:id', (req, res) => {
     });
 });
 
+// Route for Poses by LEVEL
+app.get('/level', (req, res) => {
+  return res.render('search-level')
+});
+
+// Post Route for Search by level
+app.post("/search/level", (req, res) => {
+  axios.get('https://yoga-api-nzy4.onrender.com/v1/poses?level=' + req.body.level)
+    .then(function (response) {
+      // handle success
+      console.log(response.data)
+      return res.render('poses-by-level', { poses: response.data.poses })
+    })
+    .catch(function (error) {
+      res.json({ message: 'Data not found. Please try again later.' });
+    });
+})
+
 // Route to Search
 app.get("/search", (req, res) => {
   return res.render('search');
 });
 
+// Post Route 
+app.post("/search", (req, res) => {
+  axios.get('https://yoga-api-nzy4.onrender.com/v1/poses?name=' + req.body.pose)
+    .then(function (response) {
+      // handle success
+      console.log(response.data)
+      return res.render('pose', { pose: response.data })
+    })
+    .catch(function (error) {
+      res.json({ message: 'Data not found. Please try again later.' });
+    });
+})
 
 
 
