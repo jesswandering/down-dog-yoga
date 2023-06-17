@@ -1,5 +1,7 @@
 # `Down Dog Yoga App`
-Down Dog Yoga is a simple way to make yoga a part of your daily routine.  The poses are broken down into categories to help you choose which area you would like to address. Each category offers a quick and convenient list of yoga poses, Sanskrit name, description and benefits to improve your flexibility, maintain your natural range of motion, strength, and balance.  It's never too late to start yoga, so just get Down Dog.
+Down Dog Yoga is a simple way to make yoga a part of your daily routine.  The poses are broken down into categories to help you choose which area you would like to address. Each category offers a quick and convenient list of yoga poses, Sanskrit name, description of how to get into the pose and benefits to improve your flexibility, maintain your natural range of motion, strength, and balance.  
+
+It's never too late to start yoga, so just get Down Dog.
 
 ## TECHNOLOGIES USED: 
 * Node.js
@@ -9,7 +11,11 @@ Down Dog Yoga is a simple way to make yoga a part of your daily routine.  The po
 * Bootstrap
 * Postgress
 * Sequelize
+* HTML
+* CSS
 
+## ACCESSING THE WEBSITE ONLINE
+Visit: 
 
 ## HOW TO USE
 * Create an account
@@ -32,9 +38,12 @@ Down Dog Yoga uses an API to get information on yoga poses, the Sanskrit name, a
 
 Users can add and remove poses or categories they are working on to a favorites page for quick access to poses they are working up to.
 
-## API CALLS
-
-
-
+## API 
 https://yoga-api-nzy4.onrender.com/v1
 
+## SREENSHOTS
+
+## UNSOLVED PROBLEMS/FUTURE GOALS
+1. Improve UI/UX
+2. Add a timer of how long to hold each pose
+3. Add videos of how to get into each pose

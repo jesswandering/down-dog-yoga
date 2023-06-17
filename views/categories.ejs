@@ -1,13 +1,18 @@
-<h2>Categories</h2>
-<a href="/categories">Categories</a>
-<% console.log('categories --->', categories) %>
-    <ul class="list-group">
-        <% for( let i=0; i < categories.length; i++ ) { %>
-            <% let category=categories[i] %>
-                <li class="list-group-item">
-                    <a href="/categories/<%= category.id %>">
-                        <%= category.category_name %>
-                    </a>
+<link rel="stylesheet" href="/style.css">
+<div class="container">
+    <h2 class="text-center">Categories</h2>
+    <% console.log('categories --->', categories) %>
+        <ul class="list-group list-group-light justify-content-center max-width: 200%">
+            <% for (let i=0; i < categories.length; i++) { %>
+                <% let category=categories[i] %>
+                    <li class="list-group-item d-flex justify-content-center align-items-center">
+                        <a href="/categories/<%= category.id %>">
+                            <%= category.category_name %>
+                        </a>
+                        <span class="badge badge-primary rounded-pill">
+                            <%= category.count %>
+                        </span>
+                    </li>
                     <% } %>
-                </li>
-    </ul>
+        </ul>
+</div>
