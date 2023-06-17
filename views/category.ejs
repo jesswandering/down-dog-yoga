@@ -1,28 +1,63 @@
-<h1>
-    <%= category.category_name %>
-</h1>
+<!-- details page -->
+<section class="pt-5">
+    <div class="container shadow section-sm rounded">
+        <div class="columns is-multiline">
+            <!-- sidebar -->
+            <div class="column is-3-desktop is-12-tablet">
+                <ul class="sidenav">
+                    <li title="Poses" class="sidelist parent active">
+                        <a href="/poses">Poses</a>
+                        <ul>
+                            <% category.poses.forEach((pose)=> { %>
+                                <li class="sidelist">
+                                    <a href="/poses/<%= pose.id %>">
+                                        <%= pose.english_name %>
+                                    </a>
+                                </li>
+                                <% }); %>
+                        </ul>
+                    </li>
+                    <li class="sidelist">
+                        <a href="/categories">Categories</a>
+                    </li>
+                    <li class="sidelist">
+                        <a href="/poses">Poses</a>
+                    </li>
+                </ul>
+            </div>
 
-<p>
-    <%= category.category_description %>
-</p>
-<ul>
-    <% for( let i=0; i < category.poses.length; i++ ) { %>
-        <% let pose=category.poses[i] %>
-            <img src="<%= pose.url_png %>" alt="">
-            <p>
-            <h2>
-                <a href="/poses/<%= pose.id %>">
-                    <%= pose.english_name %>
-                </a>
-            </h2>
-            </p>
-            <b>Sanskrit Name:</b>
-            <%= pose.sanskrit_name %>
-                <p>
-                    <b>Pose Description:</b>
-                    <%= pose.pose_description %>
-                </p>
-                <hr>
-                <% } %>
-
-</ul>
+            <!-- body -->
+            <div class="column is-8-desktop is-12-tablet">
+                <div class="px-4">
+                    <h2 class="mb-4 has-text-weight-medium">Poses</h2> <!-- main content -->
+                    <div class="content">
+                        <% category.poses.forEach((pose)=> { %>
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="content">
+                                        <p><img src="<%= pose.url_png %>" alt="<%= pose.english_name %>"
+                                                style="margin-left: 125px;" width="500" height="500"></p>
+                                        <h4><strong><a href="/poses/<%= pose.id %>">
+                                                    <%= pose.english_name %>
+                                                </a></strong></h4>
+                                        <p>
+                                            <strong>Sanskrit Name: </strong>
+                                            <%= pose.sanskrit_name %>
+                                        </p>
+                                        <div class="mt-5">
+                                            <h5>Pose Description</h5>
+                                            <p>
+                                                <%= pose.pose_description %>
+                                            </p>
+                                            <br>
+                                            <h5>Pose Benefits:</h5>
+                                            <p>
+                                                <%= pose. pose_benefits %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <% }); %>
+                    </div>

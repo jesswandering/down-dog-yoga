@@ -1,23 +1,27 @@
 <section class="section">
-    <div class="container">
-        <div class="columns is-desktop is-justify-content-center">
+    <div class="container py-5 h-100">
+        <div class=" columns is-desktop is-justify-content-center">
             <div class="column is-8-desktop">
-                <div class="p-6 shadow rounded content">
-                    <h2 class="section-title">Search</h2>
-                    <form method="POST" action="/search">
-                        <div class="columns is-multiline">
+                <div class="card bg-white text-black" style="border-radius: 1rem; shadow rounded content">
+                    <div class="card-body p-5 text-center">
 
-                            <div class="form-group column is-12">
-                                <label for="pose">Pose Name</label>
-                                <input type="text" class="input" id="pose" name="pose" placeholder="" required>
+                        <h2 class="section-title">Search for a Pose</h2>
+                        <br>
+                        <form method="POST" action="/search">
+                            <div class="columns is-multiline">
+
+                                <div class="form-group column is-12">
+                                    <label for="pose">Pose Name</label>
+                                    <input type="text" class="input" id="pose" name="pose" placeholder="" required>
+                                </div>
+                                <br>
+                                <div class="column is-12">
+                                    <button type="submit" class="btn btn-primary">Go to Pose</button>
+                                </div>
                             </div>
-                            <div class="column is-12">
-                                <button type="submit" class="btn btn-primary">Go to Pose</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </section>

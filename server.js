@@ -7,7 +7,6 @@ const flash = require('connect-flash');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
-app.use(express.static("public"));
 
 
 

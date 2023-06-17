@@ -1,61 +1,63 @@
-<h1 class="text-center text-black mb-0">Down Dog Yoga</h1>
-<section>
-  <div class="container d-flex justify-content-center align-items-center" style="height: 90vh;">
-    <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
-      <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
-      <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
-      <div class="card bg-glass">
-        <div class="card-body px-4 py-5 px-md-5">
-          <form action="/auth/signup" method="POST">
-            <!-- 2 column grid layout with text inputs for the first and last names -->
-            <div class="row">
-              <div class="col-md-6 mb-4">
-                <div class="form-outline">
-                  <input name="name" type="text" id="form3Example1" class="form-control" />
-                  <label class="form-label" for="form3Example1">Name</label>
+<div class="container py-5 h-100">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="card bg-white text-black" style="border-radius: 1rem;">
+        <div class="card-body p-5 text-center">
+
+          <div class="mb-md-5 mt-md-4 pb-5">
+
+            <h2 class="fw-bold mb-2">Welcome to Down Dog Yoga</h2>
+            <p class="text-black-50 mb-5">Please Sign Up for an Account.</p>
+            <form action="/auth/signup" method="POST">
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input name="name" type="text" id="form3Example1" class="form-control" />
+                    <label class="form-label" for="form3Example1">Name</label>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <input name="email" type="email" id="form3Example3" class="form-control" />
-              <label class="form-label" for="form3Example3">Email address</label>
-            </div>
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input name="email" type="email" id="form3Example3" class="form-control" />
+                <label class="form-label" for="form3Example3">Email address</label>
+              </div>
 
-            <!-- Password input -->
-            <div class="form-outline mb-4">
-              <input name="password" type="password" id="form3Example4" class="form-control" />
-              <label class="form-label" for="form3Example4">Password</label>
-            </div>
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <input name="password" type="password" id="form3Example4" class="form-control" />
+                <label class="form-label" for="form3Example4">Password</label>
+              </div>
 
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">
-              Sign Up!
-            </button>
-
-
-            <!-- Register buttons -->
-            <div class="text-center">
-              Already have an account? <a href="/auth/login">Log In</a>
-
-              <button type="button" class="btn btn-link btn-floating mx-1">
-                <i class="fab fa-google"></i>
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block mb-4">
+                Sign Up!
               </button>
 
-              <button type="button" class="btn btn-link btn-floating mx-1">
-                <i class="fab fa-twitter"></i>
-              </button>
 
-              <button type="button" class="btn btn-link btn-floating mx-1">
-                <i class="fab fa-github"></i>
-              </button>
-            </div>
-          </form>
+              <!-- Register buttons -->
+              <div class="text-center">
+                Already have an account? <a href="/auth/login">Log In</a>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-google"></i>
+                </button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-twitter"></i>
+                </button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-github"></i>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-</section>
-<!-- Section: Design Block -->
+  </section>
+  <!-- Section: Design Block -->

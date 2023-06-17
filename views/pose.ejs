@@ -1,16 +1,49 @@
-<h2>
-    <%= pose.english_name %>
-</h2>
-<img src="<%= pose.url_png %>" alt="">
-<p>
-<h5>Sanskrit Name: <%= pose.sanskrit_name %>
-</h5>
-</p>
-<p>
-    <b>Pose Description:</b>
-    <%= pose.pose_description %>
-</p>
-<p>
-    <b>Pose Benefits:</b>
-    <%= pose. pose_benefits %>
-</p>
+<section class="pt-6">
+    <div class="container shadow section-sm rounded">
+        <div class="columns is-multiline">
+            <!-- sidebar -->
+            <div class="column is-3-desktop is-12-tablet">
+                <ul class="sidenav">
+                    <li title="Poses" class="sidelist parent">
+                        <a href="/poses">Poses</a>
+                    </li>
+                    <li class="sidelist">
+                        <a href="/categories">Categories</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="column is-8-desktop is-12-tablet">
+                <div class="px-4">
+                    <h2 class="mb-4 has-text-weight-medium">
+                        <%= pose.english_name %>
+                    </h2>
+                    <div class="content">
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="content">
+                                    <p><img src="<%= pose.url_png %>" alt="<%= pose.english_name %>"></p>
+                                    <p>
+                                        <strong>Sanskrit Name: </strong>
+                                        <%= pose.sanskrit_name %>
+                                    </p>
+                                    <div class="mt-5">
+                                        <h5>Pose Description</h5>
+                                        <p>
+                                            <%= pose.pose_description %>
+                                        </p>
+                                        <br>
+                                        <h5>Pose Benefits:</h5>
+                                        <p>
+                                            <%= pose. pose_benefits %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -5,110 +5,59 @@
             <!-- sidebar -->
             <div class="column is-3-desktop is-12-tablet">
                 <ul class="sidenav">
-                    <li title="pose" class="sidelist parent active">
-                        <a href="/pose">Poses</a>
+                    <li title="Poses" class="sidelist parent active">
+                        <a href="/poses">Poses</a>
                         <ul>
-                            <% for( let i=0; i < poses.length; i++ ) { %>
-                                <% let pose=poses[i] %>
-                                    <li class="sidelist">
-                                        <a href="/poses/<%= pose.id %>">
-                                            <%= pose.english_name %>
-                                        </a>
-                                    </li>
-                                    <% }; %>
+                            <% poses.forEach((pose)=> { %>
+                                <li class="sidelist">
+                                    <a href="/poses/<%= pose.id %>">
+                                        <%= pose.english_name %>
+                                    </a>
+                                </li>
+                                <% }); %>
                         </ul>
                     </li>
                     <li class="sidelist">
                         <a href="/categories">Categories</a>
                     </li>
                     <li class="sidelist">
-                        <a href="/poses-by-level">Levels</a>
+                        <a href="/poses">Poses</a>
                     </li>
                 </ul>
             </div>
-
 
             <!-- body -->
             <div class="column is-8-desktop is-12-tablet">
                 <div class="px-4">
                     <h2 class="mb-4 has-text-weight-medium">Poses</h2> <!-- main content -->
                     <div class="content">
-                        <% for( let i=0; i < poses.length; i++ ) { %>
-                            <% let pose=poses[i] %>
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div class="content">
-                                            <p><img src="<%= pose.url_png %>" alt="<%= pose.english_name %>" width="500"
-                                                    height="500"></p>
-                                            <div class="mt-5">
-                                                <h2>
-                                                    <a href="/poses/<%= pose.id %>">
-                                                        <%= pose.english_name %> Pose
-                                                    </a>
-                                                </h2>
-                                                <h5>Sanskrit Name:
-                                                    <%= pose.sanskrit_name %>
-                                                </h5>
-                                                </p>
-                                                <p>
-                                                    <b>Pose Description:</b>
-                                                    <%= pose.pose_description %>
-                                                </p>
-                                                <p>
-                                                    <b>Pose Benefits:</b>
-                                                    <%= pose. pose_benefits %>
-                                                </p>
-                                                <ul>
-
-                                                </ul>
-                                            </div>
+                        <% poses.forEach((pose)=> { %>
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="content">
+                                        <p><img src="<%= pose.url_png %>" alt="<%= pose.english_name %>"
+                                                style="margin-left: 125px;" width="500" height="500"></p>
+                                        <h4><strong><a href="/poses/<%= pose.id %>">
+                                                    <%= pose.english_name %>
+                                                </a></strong></h4>
+                                        <p>
+                                            <strong>Sanskrit Name: </strong>
+                                            <%= pose.sanskrit_name %>
+                                        </p>
+                                        <div class="mt-5">
+                                            <h5>Pose Description</h5>
+                                            <p>
+                                                <%= pose.pose_description %>
+                                            </p>
+                                            <br>
+                                            <h5>Pose Benefits:</h5>
+                                            <p>
+                                                <%= pose. pose_benefits %>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-                                <hr />
-                                <% }; %>
-                    </div>
-
-
-
-                    <!-- body -->
-                    <div class="column is-8-desktop is-12-tablet">
-                        <div class="px-4">
-                            <h2 class="mb-4 has-text-weight-medium">Poses</h2> <!-- main content -->
-                            <div class="content center items">
-                                <% for( let i=0; i < poses.length; i++ ) { %>
-                                    <% let pose=poses[i] %>
-                                        <div class="card has shadow">
-                                            <div class="card-content">
-                                                <div class="content">
-                                                    <img src="<%= pose.url_png %>" alt="">
-                                                    <a href="/poses/<%= pose.id %>">
-                                                        </p>
-                                                        <p><strong>
-                                                                <h5>
-                                                                    <%= pose.english_name %> Pose
-                                                    </a></strong></h5>
-                                                    </p>
-                                                    <p>
-
-                                                    <h5>Sanskrit Name:
-                                                        <%= pose.sanskrit_name %>
-                                                    </h5>
-                                                    </p>
-                                                    <p>
-                                                        <b>Pose Description:</b>
-                                                        <%= pose.pose_description %>
-                                                    </p>
-                                                    <p>
-                                                        <b>Pose Benefits:</b>
-                                                        <%= pose. pose_benefits %>
-                                                    </p>
-
-                                                    <% }; %>
-                                                        </ul>
-                                                </div>
-                                            </div>
-                                        </div>
                             </div>
                             <hr />
-                        </div>
+                            <% }); %>
+                    </div>
