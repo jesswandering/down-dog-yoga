@@ -11,7 +11,7 @@
                             <% category.poses.forEach((pose)=> { %>
                                 <li class="sidelist">
                                     <a href="/poses/<%= pose.id %>">
-                                        <%= pose.english_name %>
+                                        <%= pose.english_name %> Pose
                                     </a>
                                 </li>
                                 <% }); %>
@@ -29,7 +29,9 @@
             <!-- body -->
             <div class="column is-8-desktop is-12-tablet">
                 <div class="px-4">
-                    <h2 class="mb-4 has-text-weight-medium">Poses</h2> <!-- main content -->
+                    <h2 class="mb-4 has-text-weight-medium">
+                        <%= category.category_name %> Poses
+                    </h2> <!-- main content -->
                     <div class="content">
                         <% category.poses.forEach((pose)=> { %>
                             <div class="card">
@@ -38,7 +40,7 @@
                                         <p><img src="<%= pose.url_png %>" alt="<%= pose.english_name %>"
                                                 style="margin-left: 125px;" width="500" height="500"></p>
                                         <h4><strong><a href="/poses/<%= pose.id %>">
-                                                    <%= pose.english_name %>
+                                                    <%= pose.english_name %> Pose
                                                 </a></strong></h4>
                                         <p>
                                             <strong>Sanskrit Name: </strong>
