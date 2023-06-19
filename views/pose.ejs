@@ -40,6 +40,40 @@
                                         <br>
                                         <button class="btn btn-primary favorite-btn">Add to Favorites</button>
 
+                                        <script>
+                                            // Get a reference to the "Add to Favorites" button
+                                            const favoriteBtn = document.querySelector('.favorite-btn');
+
+                                            // Add an event listener to the button
+                                            favoriteBtn.addEventListener('click', () => {
+                                                // Create an object with the pose details
+                                                const poseData = {
+                                                    english_name: '<%= pose.english_name %>',
+                                                    url_png: '<%= pose.url_png %>',
+                                                    sanskrit_name: '<%= pose.sanskrit_name %>',
+                                                    pose_description: '<%= pose.pose_description %>',
+                                                    pose_benefits: '<%= pose.pose_benefits %>'
+                                                };
+
+                                                // Send a POST request to the server to add the pose to favorites
+                                                fetch('/favorites', {
+                                                    method: 'POST',
+                                                    headers: {
+                                                        'Content-Type': 'application/json'
+                                                    },
+                                                    body: JSON.stringify(poseData)
+                                                })
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        console.log(data); // Optional: Log the response data
+                                                        // Display a success message or perform any required actions
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error:', error);
+                                                        // Handle the error if the request fails
+                                                    });
+                                            });
+                                        </script>
                                     </div>
                                 </div>
                             </div>

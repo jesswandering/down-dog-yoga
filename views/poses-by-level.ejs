@@ -1,24 +1,72 @@
-<h2>Poses by Level</h2>
-<ul>
-    <% for( let i=0; i < poses.length; i++ ) { %>
-        <% let pose=poses[i] %>
-            <img src="<%= pose.url_png %>" alt="">
-            <li class="sidelist">
-                <p>
-                    <%= pose.difficulty_level %>
-                </p>
-                <p>
-                    <%= pose.english_name %>
-                </p>
-                <p>
-                    <%= pose.sanskrit_name %>
-                </p>
-                <p>
-                    <%= pose.pose_description %>
-                </p>
-                <p>
-                    <%= pose.pose_benefits %>
-                </p>
-                <% } %>
-            </li>
-</ul>
+<!-- details page -->
+<section class="pt-5">
+    <div class="container shadow section-sm rounded">
+        <div class="columns is-multiline">
+            <!-- sidebar -->
+            <div class="column is-3-desktop is-12-tablet">
+                <ul class="sidenav">
+                    <li title="Poses" class="sidelist parent active">
+                        <a href="/poses">Poses</a>
+                        <ul>
+                            <% poses.forEach((pose)=> { %>
+                                <li class="sidelist">
+                                    <a href="/poses/<%= pose.id %>">
+                                        <%= pose.english_name %> Pose
+                                    </a>
+                                </li>
+                                <% }); %>
+                        </ul>
+                    </li>
+                    <li class="sidelist">
+                        <a href="/categories">Categories</a>
+                    </li>
+                    <li class="sidelist">
+                        <a href="/poses">Poses</a>
+                    </li>
+                    <li class="sidelist">
+                        <a href="/search-level">Levels</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- body -->
+            <div class="column is-8-desktop is-12-tablet">
+                <div class="px-4">
+                    <h2 class="mb-4 has-text-weight-medium">
+                        <%= poses.difficulty_level %> Poses
+                    </h2>
+                    <!-- main content -->
+                    <div class="content">
+                        <% poses.forEach((pose)=> { %>
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="content">
+                                        <p><img src="<%= pose.url_png %>" alt="<%= pose.english_name %>"
+                                                style="margin-left: 125px;" width="500" height="500"></p>
+                                        <h4><strong><a href="/poses/<%= pose.id %>">
+                                                    <%= pose.english_name %> Pose
+                                                </a></strong></h4>
+                                        <strong>Level: </strong>
+                                        <%= pose.difficulty_level %>
+                                            <br>
+                                            <p>
+                                                <strong>Sanskrit Name: </strong>
+                                                <%= pose.sanskrit_name %>
+                                            </p>
+                                            <div class="mt-5">
+                                                <h5>Pose Description</h5>
+                                                <p>
+                                                    <%= pose.pose_description %>
+                                                </p>
+                                                <br>
+                                                <h5>Pose Benefits:</h5>
+                                                <p>
+                                                    <%= pose. pose_benefits %>
+                                                </p>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <% }); %>
+                    </div>

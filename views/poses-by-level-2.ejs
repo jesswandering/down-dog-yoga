@@ -1,0 +1,24 @@
+<h2>Poses by Level</h2>
+<ul>
+    <% for( let i=0; i < poses.length; i++ ) { %>
+        <% let pose=poses[i] %>
+            <img src="<%= pose.url_png %>" alt="">
+            <li class="sidelist">
+                <p>
+                    <%= pose.difficulty_level %>
+                </p>
+                <p>
+                    <%= pose.english_name %>
+                </p>
+                <p>
+                    <%= pose.sanskrit_name %>
+                </p>
+                <p>
+                    <%= pose.pose_description %>
+                </p>
+                <p>
+                    <%= pose.pose_benefits %>
+                </p>
+                <% } %>
+            </li>
+</ul>

@@ -76,8 +76,7 @@ app.get('/categories/:id', (req, res) => {
     });
 });
 
-
-// POSES ROUTE:
+// Route for ALL POSES:
 app.get('/poses', (req, res) => {
   axios.get('https://yoga-api-nzy4.onrender.com/v1/poses')
     .then(function (response) {
@@ -104,12 +103,12 @@ app.get('/poses/:id', (req, res) => {
 });
 
 // Route for Poses by LEVEL
-app.get('/level', (req, res) => {
+app.get('/search-level', (req, res) => {
   return res.render('search-level')
 });
 
 // Post Route for Search by level
-app.post("/search/level", (req, res) => {
+app.post("/search-level", (req, res) => {
   axios.get('https://yoga-api-nzy4.onrender.com/v1/poses?level=' + req.body.level)
     .then(function (response) {
       // handle success
@@ -139,7 +138,11 @@ app.post("/search", (req, res) => {
     });
 })
 
-
+// Post route for Favorites
+app.post('/favorites', (req, res) => {
+  const poseData = req.body;
+  res.status(200).json({ message: 'Pose added to favorites successfully' });
+});
 
 
 app.use('/auth', require('./controllers/auth'));
