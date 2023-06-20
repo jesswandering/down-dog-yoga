@@ -10,6 +10,9 @@
                     <li class="sidelist">
                         <a href="/categories">Categories</a>
                     </li>
+                    <li class="sidelist">
+                        <a href="/search-level">Level</a>
+                    </li>
                 </ul>
             </div>
 
@@ -22,59 +25,56 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="content">
-                                    <p><img src="<%= pose.url_png %>" alt="<%= pose.english_name %>"></p>
+                                    <p><img src="<%= pose.url_png %>" alt="<%= pose.english_name %>" style="margin-left: 140px;></p>
                                     <p>
                                         <strong>Sanskrit Name: </strong>
                                         <%= pose.sanskrit_name %>
                                     </p>
-                                    <div class="mt-5">
-                                        <h5>Pose Description</h5>
-                                        <p>
-                                            <%= pose.pose_description %>
-                                        </p>
-                                        <br>
-                                        <h5>Pose Benefits:</h5>
-                                        <p>
-                                            <%= pose. pose_benefits %>
-                                        </p>
-                                        <br>
-                                        <button class="btn btn-primary favorite-btn">Add to Favorites</button>
+                                    <div class=" mt-5">
+                                    <h5>Pose Description</h5>
+                                    <p>
+                                        <%= pose.pose_description %>
+                                    </p>
+                                    <br>
+                                    <h5>Pose Benefits:</h5>
+                                    <p>
+                                        <%= pose. pose_benefits %>
+                                    </p>
+                                    <br>
+                                    <button class="btn btn-primary favorite-btn">Add to Favorites</button>
 
-                                        <script>
-                                            // Get a reference to the "Add to Favorites" button
-                                            const favoriteBtn = document.querySelector('.favorite-btn');
+                                    <script>
+                                        const favoriteBtn = document.querySelector('.favorite-btn');
 
-                                            // Add an event listener to the button
-                                            favoriteBtn.addEventListener('click', () => {
-                                                // Create an object with the pose details
-                                                const poseData = {
-                                                    english_name: '<%= pose.english_name %>',
-                                                    url_png: '<%= pose.url_png %>',
-                                                    sanskrit_name: '<%= pose.sanskrit_name %>',
-                                                    pose_description: '<%= pose.pose_description %>',
-                                                    pose_benefits: '<%= pose.pose_benefits %>'
-                                                };
+                                        favoriteBtn.addEventListener('click', () => {
+                                            const poseData = {
+                                                english_name: '<%= pose.english_name %>',
+                                                url_png: '<%= pose.url_png %>',
+                                                sanskrit_name: '<%= pose.sanskrit_name %>',
+                                                pose_description: '<%= pose.pose_description %>',
+                                                pose_benefits: '<%= pose.pose_benefits %>'
+                                            };
 
-                                                // Send a POST request to the server to add the pose to favorites
-                                                fetch('/favorites', {
-                                                    method: 'POST',
-                                                    headers: {
-                                                        'Content-Type': 'application/json'
-                                                    },
-                                                    body: JSON.stringify(poseData)
+                                            fetch('/add-to-favorites', {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Content-Type': 'application/json'
+                                                },
+                                                body: JSON.stringify(poseData)
+                                            })
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    console.log(data); // Optional: Log the response data
+                                                    // Redirect to the favorites page after successfully adding the pose
+                                                    window.location.href = '/favorites';
                                                 })
-                                                    .then(response => response.json())
-                                                    .then(data => {
-                                                        console.log(data); // Optional: Log the response data
-                                                        // Display a success message or perform any required actions
-                                                    })
-                                                    .catch(error => {
-                                                        console.error('Error:', error);
-                                                        // Handle the error if the request fails
-                                                    });
-                                            });
-                                        </script>
-                                    </div>
+                                                .catch(error => {
+                                                    console.error('Error:', error);
+                                                    // Handle the error if the request fails
+                                                });
+                                        });
+                                    </script>
+
                                 </div>
                             </div>
                         </div>
@@ -82,5 +82,3 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>

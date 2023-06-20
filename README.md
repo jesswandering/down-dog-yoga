@@ -42,8 +42,13 @@ Users can add and remove poses or categories they are working on to a favorites 
 https://yoga-api-nzy4.onrender.com/v1
 
 ## SREENSHOTS
+![Homepage](public/images/homepage.png)
+![Categories Page](public/images/categories.png)
+![Pose Page](public/images/pose.png)
+![Search Page](public/images/search.png)
 
 ## UNSOLVED PROBLEMS/FUTURE GOALS
 1. Improve UI/UX
 2. Add a timer of how long to hold each pose
 3. Add videos of how to get into each pose
+4. Include a Favorites page

@@ -8,11 +8,7 @@ const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
 
-
-
 const db = require('./models');
-
-
 
 //enviornment variables
 SECRET_SESSION = process.env.SECRET_SESSION
@@ -107,6 +103,59 @@ app.get('/search-level', (req, res) => {
   return res.render('search-level')
 });
 
+// Get route for route for favorites
+app.get('/favorites', function (req, res) {
+  return res.render('favorites')
+  // const poseData = req.body;
+  // res.status(200).json({ message: 'Pose added to favorites successfully' });
+});
+
+// // Post route for Favorites
+// app.post('/favorites', function (req, res) {
+//   // print req.body to console.
+//   console.log('favorites data', req.body);
+//   // return res.json with the body information
+//   return res.json({ data: req.body })
+// })
+
+// app.post('/add-to-favorites', (req, res) => {
+//   const poseData = req.body; // Assuming you've set up body parsing middleware
+
+//   // Process the poseData and add it to the favorites list
+
+//   // Return a response indicating success or any relevant information
+//   res.json({ message: 'Pose added to favorites' });
+// });
+
+
+
+app.post('/add-to-favorites', (req, res) => {
+  const poseData = req.body;
+
+  // Store the poseData in a favorites list or database
+  // Here, I'm assuming you have a global array called "favorites" to store the poses
+  favorites.push(poseData);
+
+  res.json({ message: 'Pose added to favorites' });
+});
+
+// app.get('/favorites', (req, res) => {
+//   // Pass the favorites data to the "favorites.ejs" template
+//   res.render('favorites', { favorites: favorites });
+// });
+
+
+app.get('/favorites', (req, res) => {
+  // Retrieve the favorites data from wherever you store it (e.g., a database)
+  const favoritesData = retrieveFavoritesData();
+
+  // Pass the favorites data to the "favorites.ejs" template
+  res.render('favorites', { favorites: favoritesData });
+});
+
+
+
+
 // Post Route for Search by level
 app.post("/search-level", (req, res) => {
   axios.get('https://yoga-api-nzy4.onrender.com/v1/poses?level=' + req.body.level)
@@ -125,7 +174,7 @@ app.get("/search", (req, res) => {
   return res.render('search');
 });
 
-// Post Route 
+// Post Route for Search Poses
 app.post("/search", (req, res) => {
   axios.get('https://yoga-api-nzy4.onrender.com/v1/poses?name=' + req.body.pose)
     .then(function (response) {
@@ -137,13 +186,6 @@ app.post("/search", (req, res) => {
       res.json({ message: 'Data not found. Please try again later.' });
     });
 })
-
-// Post route for Favorites
-app.post('/favorites', (req, res) => {
-  const poseData = req.body;
-  res.status(200).json({ message: 'Pose added to favorites successfully' });
-});
-
 
 app.use('/auth', require('./controllers/auth'));
 
