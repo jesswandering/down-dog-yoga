@@ -42,9 +42,13 @@ Users can add and remove poses or categories they are working on to a favorites 
 https://yoga-api-nzy4.onrender.com/v1
 
 ## SREENSHOTS
+Homepage view:
 ![Homepage](public/images/homepage.png)
+List of categories page:
 ![Categories Page](public/images/categories.png)
+Individual pose page:
 ![Pose Page](public/images/pose.png)
+Search page view:
 ![Search Page](public/images/search.png)
 
 ## UNSOLVED PROBLEMS/FUTURE GOALS
