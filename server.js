@@ -199,6 +199,9 @@ db.user.findOne()
     })
   })
 
+// Delete Route
+
+
 
 // Post Route for Search by level
 app.post("/search-level", (req, res) => {

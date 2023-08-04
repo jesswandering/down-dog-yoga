@@ -6,38 +6,46 @@
                     <div class="card-body p-5 text-center">
 
                         <!-- favorites.ejs -->
-                        <h1>Favorites</h1>
-
-                        <ul>
-                            <% favorites.forEach(pose=> { %>
-                                <li>
-
-                                    <p>Sanskrit Name: <%= pose.name %>
-                                    </p>
-                                    <img src="<%= pose.img %>" alt="<%= pose.english_name %>">
-                                    <form action="/delete/<%=pose.id%>">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit">Delete</button>
-                                    </form>
-                                </li>
-                                <% }) %>
-                        </ul>
+                        <div class="column is-8-desktop is-12-tablet">
+                            <div class="px-4">
+                                <h2 class="mb-4 has-text-weight-medium">Favorites</h2>
+                                <div class="content">
 
 
+                                    <% favorites.forEach(pose=> { %>
+                                        <li>
+                                            <div class="card">
+                                                <div class="card-content">
+                                                    <div class="content">
+                                                        <h4>Pose Name: <%= pose.name %>
+                                                                </p>
+                                                                <img src="<%= pose.img %>"
+                                                                    alt="<%= pose.english_name %>">
+                                                                <form action="/delete/<%=pose.id%>">
+                                                                    <input type="hidden" name="_method" value="DELETE">
+                                                                    <button class="btn btn-primary favorite-btn"
+                                                                        name="id" type="submit">Remove
+                                                                        from
+                                                                        Favorites</button>
+                                                                </form>
+                                        </li>
+                                        <% }) %>
 
 
 
 
-                        <div class="columns is-multiline">
-                            <br>
 
-                            <br>
-                            <div class="column is-12">
+
+                                            <div class="columns is-multiline">
+                                                <br>
+
+                                                <br>
+                                                <div class="column is-12">
+                                                </div>
+                                            </div>
+                                            </form>
+                                </div>
                             </div>
                         </div>
-                        </form>
                     </div>
-                </div>
-            </div>
-        </div>
 </section>
