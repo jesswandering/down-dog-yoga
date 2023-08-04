@@ -41,39 +41,13 @@
                                         <%= pose. pose_benefits %>
                                     </p>
                                     <br>
-                                    <button class="btn btn-primary favorite-btn">Add to Favorites</button>
 
-                                    <script>
-                                        const favoriteBtn = document.querySelector('.favorite-btn');
-
-                                        favoriteBtn.addEventListener('click', () => {
-                                            const poseData = {
-                                                english_name: '<%= pose.english_name %>',
-                                                url_png: '<%= pose.url_png %>',
-                                                sanskrit_name: '<%= pose.sanskrit_name %>',
-                                                pose_description: '<%= pose.pose_description %>',
-                                                pose_benefits: '<%= pose.pose_benefits %>'
-                                            };
-
-                                            fetch('/add-to-favorites', {
-                                                method: 'POST',
-                                                headers: {
-                                                    'Content-Type': 'application/json'
-                                                },
-                                                body: JSON.stringify(poseData)
-                                            })
-                                                .then(response => response.json())
-                                                .then(data => {
-                                                    console.log(data); // Optional: Log the response data
-                                                    // Redirect to the favorites page after successfully adding the pose
-                                                    window.location.href = '/favorites';
-                                                })
-                                                .catch(error => {
-                                                    console.error('Error:', error);
-                                                    // Handle the error if the request fails
-                                                });
-                                        });
-                                    </script>
+                                    <form action="/add-to-favorites" method="post">
+                                        <input type="text" name="pose" id="" value="<%= pose.id %>" hidden>
+                                        <button class="btn btn-primary favorite-btn" name="id"
+                                            value="<%= pose.id %>">Add
+                                            to Favorites</button>
+                                    </form>
 
                                 </div>
                             </div>

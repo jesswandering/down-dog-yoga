@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.pose.hasMany(models.favorite)
+      models.pose.belongsToMany(models.user, { through: 'favorites' })
     }
   }
   pose.init({

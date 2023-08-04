@@ -104,11 +104,15 @@ app.get('/search-level', (req, res) => {
 });
 
 // Get route for route for favorites
-app.get('/favorites', function (req, res) {
-  return res.render('favorites')
-  // const poseData = req.body;
-  // res.status(200).json({ message: 'Pose added to favorites successfully' });
-});
+// app.get('/favorites', function (req, res) {
+//   console.log(req.user.id)
+//   db.user.findByPk(req.user.id).then(user => {
+//     console.log(user)
+//   })
+// return res.render('favorites')
+// const poseData = req.body;
+// res.status(200).json({ message: 'Pose added to favorites successfully' });
+// });
 
 // // Post route for Favorites
 // app.post('/favorites', function (req, res) {
@@ -130,13 +134,20 @@ app.get('/favorites', function (req, res) {
 
 
 app.post('/add-to-favorites', (req, res) => {
-  const poseData = req.body;
-
-  // Store the poseData in a favorites list or database
-  // Here, I'm assuming you have a global array called "favorites" to store the poses
-  favorites.push(poseData);
-
-  res.json({ message: 'Pose added to favorites' });
+  // console.log('where are you?', req)
+  db.user.findOne({ where: { id: req.user.id } })
+    .then(user => {
+      console.log('<--------user-------->', user)
+      db.pose.findOne({ where: { id: req.body.id } })
+        .then(pose => {
+          console.log('------pose------', pose)
+          user.addPose(pose)
+            .then(data => {
+              console.log('--------data---------', data)
+              res.redirect('/favorites')
+            })
+        })
+    })
 });
 
 // app.get('/favorites', (req, res) => {
@@ -147,13 +158,46 @@ app.post('/add-to-favorites', (req, res) => {
 
 app.get('/favorites', (req, res) => {
   // Retrieve the favorites data from wherever you store it (e.g., a database)
-  const favoritesData = retrieveFavoritesData();
-
-  // Pass the favorites data to the "favorites.ejs" template
-  res.render('favorites', { favorites: favoritesData });
+  console.log('favorites route')
+  const { id, name, email } = req.user
+  db.user.findOne({
+    where: {
+      id: req.user.id
+    }
+  })
+    .then(user => {
+      console.log('user....where are you....?', user)
+      user.getPoses()
+        .then(favorites => {
+          if (favorites.length > 0) {
+            console.log("favorites", favorites)
+            res.render('favorites', { id, name, email, favorites })
+          } else {
+            res.render('favorites', { id, name, email, favorites: [] })
+          }
+        })
+        .catch(error => {
+          console.log('error', error);
+          let message = 'Cannot load poses. Please try again later...';
+          res.render('error', { message });
+        });
+    })
+    .catch(error => {
+      console.log('error', error);
+      let message = 'Cannot find user. Please try again later...';
+      res.render('error', { message });
+    })
 });
 
-
+db.user.findOne()
+  .then(user => {
+    // load poses for this user
+    user.getPoses().then(poses => {
+      //do something with poses here
+      console.log(`${user.name}'s poses:`)
+      console.log(poses.name)
+    })
+  })
 
 
 // Post Route for Search by level

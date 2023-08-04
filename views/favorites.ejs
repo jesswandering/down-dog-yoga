@@ -5,25 +5,20 @@
                 <div class="card bg-white text-black" style="border-radius: 1rem">
                     <div class="card-body p-5 text-center">
 
-                        <h2 class="section-title">Favorites</h2>
-
-
                         <!-- favorites.ejs -->
                         <h1>Favorites</h1>
 
                         <ul>
                             <% favorites.forEach(pose=> { %>
                                 <li>
-                                    <h2>
-                                        <%= pose.english_name %> Pose
-                                    </h2>
-                                    <p>Sanskrit Name: <%= pose.sanskrit_name %>
+
+                                    <p>Sanskrit Name: <%= pose.name %>
                                     </p>
-                                    <img src="<%= pose.url_png %>" alt="<%= pose.english_name %>">
-                                    <p>Pose Description: <%= pose.pose_description %>
-                                    </p>
-                                    <p>Pose Benefits: <%= pose.pose_benefits %>
-                                    </p>
+                                    <img src="<%= pose.img %>" alt="<%= pose.english_name %>">
+                                    <form action="/delete/<%=pose.id%>">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit">Delete</button>
+                                    </form>
                                 </li>
                                 <% }) %>
                         </ul>
@@ -33,18 +28,13 @@
 
 
 
-                        <form method="POST" action="/search-level">
-                            <div class="columns is-multiline">
-                                <br>
-                                <div class="form-group column is-12">
-                                    <label for="level">Level</label>
-                                    <input type="text" class="input" id="level" name="level" placeholder="" required>
-                                </div>
-                                <br>
-                                <div class="column is-12">
-                                    <button type="submit" class="btn btn-primary">Search</button>
-                                </div>
+                        <div class="columns is-multiline">
+                            <br>
+
+                            <br>
+                            <div class="column is-12">
                             </div>
+                        </div>
                         </form>
                     </div>
                 </div>
