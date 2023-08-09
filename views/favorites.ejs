@@ -6,45 +6,28 @@
                     <div class="card-body p-5 text-center">
 
                         <!-- favorites.ejs -->
-                        <div class="column is-8-desktop is-12-tablet">
+                        <div class="column is-8-desktop is-12-tablet content is-center">
                             <div class="px-4">
                                 <h2 class="mb-4 has-text-weight-medium">Favorites</h2>
-                                <div class="content">
 
 
-                                    <% favorites.forEach(pose=> { %>
-                                        <li>
-                                            <div class="card">
-                                                <div class="card-content">
-                                                    <div class="content">
-                                                        <h4>Pose Name: <%= pose.name %>
-                                                                </p>
-                                                                <img src="<%= pose.img %>"
-                                                                    alt="<%= pose.english_name %>">
-                                                                <form action="/delete/<%=pose.id%>">
-                                                                    <input type="hidden" name="_method" value="DELETE">
-                                                                    <button class="btn btn-primary favorite-btn"
-                                                                        name="id" type="submit">Remove
-                                                                        from
-                                                                        Favorites</button>
-                                                                </form>
-                                        </li>
-                                        <% }) %>
+                                <% favorites.forEach(pose=> { %>
+                                    <li class="is-flex is-justify-content-center">
+                                        <div class="card">
+                                            <div class="card-content">
+                                                <h4>Pose Name: <%= pose.name %>
+                                                        </p>
+                                                        <img src="<%= pose.img %>" alt="<%= pose.english_name %>">
+                                                        <form action="/delete/<%=pose.id%>" method="post">
+                                                            <input type="hidden" name="_method" value="DELETE">
+                                                            <button class="btn btn-primary favorite-btn"
+                                                                type="submit">Remove
+                                                                from
+                                                                Favorites</button>
+                                                        </form>
+                                    </li>
+                                    <% }) %>
 
-
-
-
-
-
-                                            <div class="columns is-multiline">
-                                                <br>
-
-                                                <br>
-                                                <div class="column is-12">
-                                                </div>
-                                            </div>
-                                            </form>
-                                </div>
                             </div>
                         </div>
                     </div>

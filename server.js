@@ -150,12 +150,6 @@ app.post('/add-to-favorites', (req, res) => {
     })
 });
 
-// app.get('/favorites', (req, res) => {
-//   // Pass the favorites data to the "favorites.ejs" template
-//   res.render('favorites', { favorites: favorites });
-// });
-
-
 app.get('/favorites', (req, res) => {
   // Retrieve the favorites data from wherever you store it (e.g., a database)
   console.log('favorites route')
@@ -200,7 +194,19 @@ db.user.findOne()
   })
 
 // Delete Route
-
+app.delete("/delete/:id", (req, res) => {
+  console.log('-----------delete route----------------')
+  db.user.findOne({ where: { id: req.user.id } })
+    .then(user => {
+      db.pose.findOne({ where: { id: req.params.id } })
+        .then(pose => {
+          user.deletePose(pose)
+            .then(data => {
+              res.redirect('/favorites')
+            })
+        })
+    })
+})
 
 
 // Post Route for Search by level
